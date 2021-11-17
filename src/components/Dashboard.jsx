@@ -1,9 +1,12 @@
 import React from 'react'
+import './Dashboard.scss'
 
 function Dashboard() {
   return (
     <div className="dashboard">
-      Dashboard
+      <div className="dashboard__container">
+        Dashboard
+      </div>
     </div>
   )
 }

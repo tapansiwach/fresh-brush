@@ -1,0 +1,10 @@
+.register {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .register__container {
+    background-color: grey;
+  }
+}

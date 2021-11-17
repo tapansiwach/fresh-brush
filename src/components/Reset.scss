@@ -1,0 +1,10 @@
+.reset {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .reset__container {
+    background-color: grey;
+  }
+}
