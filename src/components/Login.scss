@@ -5,6 +5,7 @@
   align-items: center;
 
   .login__container {
-    background-color: grey;
+    display: flex;
+    flex-direction: column;
   }
 }
