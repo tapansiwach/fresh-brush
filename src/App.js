@@ -1,3 +1,4 @@
+import './firebase/config.js'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Dashboard from './components/Dashboard';
@@ -21,3 +22,4 @@ function App() {
 }
 
 export default App;
+
