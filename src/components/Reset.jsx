@@ -1,9 +1,23 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { resetPasssord } from '../firebase/auth';
 import './Reset.scss'
 
 function Reset() {
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const resetUserPasssword = async (email) => {
+    console.log("resetting user password...");
+    const { success, error } = await resetPasssord(email);
+    if (success) {
+      setEmail("");
+      alert("email sent to reset password");
+      navigate('/login');
+    } else {
+      alert(`error while resetting password ${error}`);
+    }
+  }
 
   return (
     <div className="reset">
@@ -15,7 +29,10 @@ function Reset() {
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
-        <button className="reset__button">
+        <button
+          className="reset__button"
+          onClick={resetUserPasssword}
+        >
           Reset your passsord
         </button>
         <div className="reset__div">
