@@ -12,7 +12,12 @@ function Register() {
     if (!name) {
       alert("Please provide a name");
     } else {
-      register(name, email, password);
+      const [, errorMessage] = await register(name, email, password);
+      if (!errorMessage) {
+        setName("");
+        setEmail("");
+        setPassword("");
+      }
     }
   }
 
