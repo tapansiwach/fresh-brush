@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import './Register.scss'
 import { register } from '../firebase/auth';
+import { auth } from '../firebase/config';
 
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [user, loading, error] = useAuthState(auth);
 
   const registerUser = async () => {
     if (!name) {
@@ -20,6 +24,11 @@ function Register() {
       }
     }
   }
+
+  useEffect(() => {
+    if (loading) return;
+    if (user) navigate('/');
+  }, [user, loading]);
 
   return (
     <div className="register">
