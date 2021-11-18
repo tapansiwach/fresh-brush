@@ -8,8 +8,12 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const registerUser = () => {
-    register(name, email, password);
+  const registerUser = async () => {
+    if (!name) {
+      alert("Please provide a name");
+    } else {
+      register(name, email, password);
+    }
   }
 
   return (
