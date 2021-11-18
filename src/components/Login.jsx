@@ -1,16 +1,29 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { login } from '../firebase/auth';
 import './Login.scss'
+import { auth } from '../firebase/config';
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [user, loading, error] = useAuthState(auth);
 
   const loginUser = async () => {
     console.log("logging user in...");
     await login(email, password);
   }
+
+  useEffect(() => {
+    if (error) {
+      console.log(`error`, error.message);
+      return;
+    }
+    if (loading) return;
+    if (user) navigate('/');
+  }, [user, loading, error, navigate])
 
   return (
     <div className="login">
