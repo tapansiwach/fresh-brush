@@ -21,7 +21,7 @@ function Dashboard() {
       return;
     }
     if (loading) return;
-    if (!user) navigate('/login');
+    if (!user) navigate('/login', { replace: true });
   }, [user, loading, error, navigate]);
 
   return (

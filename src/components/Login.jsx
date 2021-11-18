@@ -22,7 +22,7 @@ function Login() {
       return;
     }
     if (loading) return;
-    if (user) navigate('/');
+    if (user) navigate('/', { replace: true });
   }, [user, loading, error, navigate])
 
   return (
