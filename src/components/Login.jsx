@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import { login } from '../firebase/auth';
 import './Login.scss'
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const loginUser = async () => {
+    console.log("logging user in...");
+    await login(email, password);
+  }
 
   return (
     <div className="login">
@@ -23,7 +29,10 @@ function Login() {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button className="login__button">
+        <button
+          className="login__button"
+          onClick={loginUser}
+        >
           Login
         </button>
         <div className="login__div">

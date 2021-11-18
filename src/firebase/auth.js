@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signOut,
 } from '@firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
@@ -34,7 +35,16 @@ const logout = async () => {
   }
 }
 
+const login = async (email, password) => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    console.log(`error`, error.message);
+  }
+}
+
 export {
   register,
   logout,
+  login,
 }
