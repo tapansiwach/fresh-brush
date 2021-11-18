@@ -26,9 +26,13 @@ function Register() {
   }
 
   useEffect(() => {
+    if (error) {
+      console.log(`error`, error.message);
+      return;
+    }
     if (loading) return;
     if (user) navigate('/');
-  }, [user, loading]);
+  }, [user, loading, error, navigate]);
 
   return (
     <div className="register">
