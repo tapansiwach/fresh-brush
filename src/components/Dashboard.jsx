@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { logout } from '../firebase/auth';
-import './Dashboard.scss'
+import './Dashboard.scss';
+import Canvas from './Canvas';
 import { auth } from '../firebase/config';
 
 function Dashboard() {
@@ -44,7 +45,8 @@ function Dashboard() {
           </ul>
         </div>
         <div className="dashboard__mainContent">
-          Main Content
+          Canvas
+          <Canvas />
         </div>
       </div>
     </div>

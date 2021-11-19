@@ -25,5 +25,7 @@
     flex: auto;
     background-color: $secondary;
     padding: 16px;
+    display: flex;
+    flex-direction: column;
   }
 }
