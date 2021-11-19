@@ -1,5 +1,12 @@
 import { db } from "./config";
-import { doc, setDoc } from 'firebase/firestore';
+import {
+  doc,
+  setDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+} from 'firebase/firestore';
 
 const createUserDocInDB = async (uid, name, email) => {
   try {
@@ -14,19 +21,13 @@ const createUserDocInDB = async (uid, name, email) => {
   }
 }
 
-// const createImageDocInDB = async (uid, fileName, filePath) => {
-//   try {
-//     const filePath = `users/${uid}/${fileName}`;
-//     await setDoc(doc(db, "images", `${fileName}`), {
-//       uid,
-//       filePath,
-//     });
-//   } catch (error) {
-//     console.log(`error`, error.message);
-//   }
-// }
+const getImageDocs = async (uid) => {
+  const q = query(collection(db, "images"), where("uid", "==", uid));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot;
+}
 
 export {
   createUserDocInDB,
-  // createImageDocInDB,
+  getImageDocs,
 }

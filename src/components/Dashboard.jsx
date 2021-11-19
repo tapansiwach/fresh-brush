@@ -53,7 +53,10 @@ function Dashboard() {
         </div>
         <div className="dashboard__mainContent">
           {view === "canvas" && <Canvas />}
-          {view === "gallery" && <Gallery />}
+          {view === "gallery" &&
+            <Gallery
+              uid={user?.uid}
+            />}
         </div>
       </div>
     </div>
