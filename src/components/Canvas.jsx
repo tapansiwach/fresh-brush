@@ -9,9 +9,10 @@ function Canvas() {
   useEffect(() => {
     const context = canvasRef.current.getContext("2d");
     const canvas = canvasRef.current;
-    canvas.width = (window.innerWidth - 282) * devicePixelRatio;
+    const [sideNavWidth, mainContentPadding] = [250, 16];
+    canvas.width = (window.innerWidth - (sideNavWidth + 2 * mainContentPadding)) * devicePixelRatio;
     canvas.height = (window.innerHeight - 100) * devicePixelRatio;
-    canvas.style.width = `${(window.innerWidth - 282)}px`;
+    canvas.style.width = `${(window.innerWidth - (sideNavWidth + 2 * mainContentPadding))}px`;
     canvas.style.height = `${(window.innerHeight - 100)}px`;
     context.lineJoin = "round";
     context.lineCap = "round";
