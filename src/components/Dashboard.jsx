@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { logout } from '../firebase/auth';
 import './Dashboard.scss';
 import Canvas from './Canvas';
 import { auth } from '../firebase/config';
+import Gallery from './Gallery';
 
 function Dashboard() {
   const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
+  const [view, setView] = useState("canvas");
 
   const logoutUser = async () => {
     await logout();
@@ -42,7 +44,8 @@ function Dashboard() {
           </ul>
         </div>
         <div className="dashboard__mainContent">
-          <Canvas />
+          {view === "canvas" && <Canvas />}
+          {view === "gallery" && <Gallery />}
         </div>
       </div>
     </div>
