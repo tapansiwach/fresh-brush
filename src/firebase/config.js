@@ -15,15 +15,11 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig);
-console.log(app.options);
 
 const auth = getAuth();
-console.log(`auth`, auth);
 
 const db = getFirestore(app);
-console.log(`db`, db);
 
 const storage = getStorage(app);
-console.log(`storage`, storage);
 
 export { auth, db, storage }

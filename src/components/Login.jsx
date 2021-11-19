@@ -12,7 +12,6 @@ function Login() {
   const [user, loading, error] = useAuthState(auth);
 
   const loginUser = async () => {
-    console.log("logging user in...");
     await login(email, password);
   }
 

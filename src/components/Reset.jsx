@@ -8,7 +8,6 @@ function Reset() {
   const navigate = useNavigate();
 
   const resetUserPasssword = async (email) => {
-    console.log("resetting user password...");
     const { success, error } = await resetPasssord(email);
     if (success) {
       setEmail("");

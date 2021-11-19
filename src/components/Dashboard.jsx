@@ -11,9 +11,7 @@ function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
 
   const logoutUser = async () => {
-    console.log("logging out...");
     await logout();
-    console.log("user logged out")
   }
 
   useEffect(() => {
