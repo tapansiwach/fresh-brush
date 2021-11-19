@@ -1,13 +1,18 @@
-import { storage } from './config';
+import { storage, db } from './config';
 import { ref, uploadBytes } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 const saveCanvasImage = async (uid, fileName, file) => {
   try {
-    const storageRef = ref(storage, `users/${uid}/${fileName}`);
+    const filePath = `users/${uid}/${fileName}`;
+    const storageRef = ref(storage, filePath);
 
     // 'file' comes from the Blob or File API
     const snapshot = await uploadBytes(storageRef, file);
-    console.log(`snapshot`, snapshot);
+    await setDoc(doc(db, "images", `${fileName}`), {
+      uid,
+      filePath,
+    });
   } catch (error) {
     console.log(`error`, error.message);
   }
