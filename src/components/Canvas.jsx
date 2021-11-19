@@ -3,9 +3,11 @@ import './Canvas.scss';
 
 function Canvas() {
   const canvasRef = useRef(null);
+  const contextRef = useRef(null);
 
   useEffect(() => {
     const context = canvasRef.current.getContext("2d");
+    contextRef.current = context;
   }, [])
 
   const startDrawing = (e) => {
