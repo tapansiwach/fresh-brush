@@ -4,19 +4,12 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from '@firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
-import { auth, db } from './config';
+import { auth } from './config';
 
 const register = async (name, email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password)
     const uid = userCredential.user.uid;
-    await setDoc(doc(db, 'users', uid), {
-      uid,
-      name,
-      email,
-      verfiedEmail: false,
-    });
     return [uid, null];
   } catch (error) {
     console.log(`error.message`, error.message);

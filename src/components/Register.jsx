@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import './Register.scss'
 import { register } from '../firebase/auth';
 import { auth } from '../firebase/config';
+import { createUserDocInDB } from '../firebase/db';
 
 function Register() {
   const [name, setName] = useState("");
@@ -16,11 +17,12 @@ function Register() {
     if (!name) {
       alert("Please provide a name");
     } else {
-      const [, errorMessage] = await register(name, email, password);
+      const [uid, errorMessage] = await register(name, email, password);
       if (!errorMessage) {
         setName("");
         setEmail("");
         setPassword("");
+        await createUserDocInDB(uid, name, email);
       }
     }
   }
