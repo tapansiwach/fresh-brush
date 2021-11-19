@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase/config';
+import { saveCanvasImage } from '../firebase/storage';
 import './Canvas.scss';
 
 function Canvas() {
+  const [user] = useAuthState(auth);
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -40,7 +44,11 @@ function Canvas() {
   }
 
   const saveImage = () => {
-    console.log("TODO: implement functionality to save image");
+    const uid = user.uid;
+    const fileName = Date.now();
+    canvasRef.current.toBlob(blob => {
+      saveCanvasImage(uid, fileName, blob);
+    });
   }
 
   return (
