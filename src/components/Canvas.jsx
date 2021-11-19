@@ -8,24 +8,28 @@ function Canvas() {
 
   useEffect(() => {
     const context = canvasRef.current.getContext("2d");
+    const canvas = canvasRef.current;
+    canvas.width = (window.innerWidth - 282) * devicePixelRatio;
+    canvas.height = (window.innerHeight - 100) * devicePixelRatio;
+    canvas.style.width = `${(window.innerWidth - 282)}px`;
+    canvas.style.height = `${(window.innerHeight - 100)}px`;
     context.lineJoin = "round";
     context.lineCap = "round";
+    context.scale(devicePixelRatio, devicePixelRatio);
     contextRef.current = context;
   }, [])
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
-    const [x, y] = [offsetX / devicePixelRatio, offsetY / devicePixelRatio];
     contextRef.current.beginPath();
-    contextRef.current.moveTo(x, y);
+    contextRef.current.moveTo(offsetX, offsetY);
     setIsDrawing(true);
   }
 
   const draw = (e) => {
     if (!isDrawing) return;
     const { offsetX, offsetY } = e.nativeEvent;
-    const [x, y] = [offsetX / devicePixelRatio, offsetY / devicePixelRatio];
-    contextRef.current.lineTo(x, y);
+    contextRef.current.lineTo(offsetX, offsetY);
     contextRef.current.stroke();
   }
 
