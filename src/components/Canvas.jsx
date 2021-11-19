@@ -38,16 +38,28 @@ function Canvas() {
     contextRef.current.closePath();
     setIsDrawing(false);
   }
+
+  const saveImage = () => {
+    console.log("TODO: implement functionality to save image");
+  }
+
   return (
-    <canvas
-      id="canvas"
-      onMouseDown={e => startDrawing(e)}
-      onMouseMove={e => draw(e)}
-      onMouseUp={e => finishDrawing(e)}
-      ref={canvasRef}
-    >
-      your browser doesn't support canvas
-    </canvas>
+    <>
+      <canvas
+        id="canvas"
+        onMouseDown={e => startDrawing(e)}
+        onMouseMove={e => draw(e)}
+        onMouseUp={e => finishDrawing(e)}
+        ref={canvasRef}
+      >
+        your browser doesn't support canvas
+      </canvas>
+      <button
+        onClick={saveImage}
+      >
+        Save Image
+      </button>
+    </>
   )
 }
 

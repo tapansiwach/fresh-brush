@@ -27,10 +27,9 @@ function Dashboard() {
     <div className="dashboard">
       <div className="dashboard__container">
         <div className="dashboard__sidenav">
-          Side Nav
           <ul>
-            <li>List Item 1</li>
-            <li>List Item 2</li>
+            <li>Canvas</li>
+            <li>Gallery</li>
             <hr />
             <li>
               <button
@@ -43,7 +42,6 @@ function Dashboard() {
           </ul>
         </div>
         <div className="dashboard__mainContent">
-          Canvas
           <Canvas />
         </div>
       </div>
