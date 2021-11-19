@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import './Canvas.scss';
 
 function Canvas() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const context = canvasRef.current.getContext("2d");
+  }, [])
+
   const startDrawing = (e) => {
     console.log("starting to draw");
     console.log(`e`, e);
@@ -21,6 +27,7 @@ function Canvas() {
       onMouseDown={e => startDrawing(e)}
       onMouseMove={e => draw(e)}
       onMouseUp={e => finishDrawing(e)}
+      ref={canvasRef}
     >
       your browser doesn't support canvas
     </canvas>
