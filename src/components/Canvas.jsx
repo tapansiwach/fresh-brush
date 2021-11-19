@@ -14,9 +14,9 @@ function Canvas() {
     const context = canvasRef.current.getContext("2d");
     const canvas = canvasRef.current;
     const [sideNavWidth, mainContentPadding] = [250, 16];
-    canvas.width = (window.innerWidth - (sideNavWidth + 2 * mainContentPadding)) * devicePixelRatio;
+    canvas.width = (window.innerWidth - (sideNavWidth + 4 * mainContentPadding)) * devicePixelRatio;
     canvas.height = (window.innerHeight - 100) * devicePixelRatio;
-    canvas.style.width = `${(window.innerWidth - (sideNavWidth + 2 * mainContentPadding))}px`;
+    canvas.style.width = `${(window.innerWidth - (sideNavWidth + 4 * mainContentPadding))}px`;
     canvas.style.height = `${(window.innerHeight - 100)}px`;
     context.lineJoin = "round";
     context.lineCap = "round";

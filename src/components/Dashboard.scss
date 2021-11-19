@@ -18,6 +18,22 @@
       margin-top: 16px;
       padding: 0;
       list-style: none;
+
+      li {
+        padding: 16px;
+        margin-top: 10px;
+
+        &:hover {
+          background-color: $primary-strong;
+          color: white;
+          cursor: pointer;
+        }
+
+        &.active {
+          background-color: $secondary-strong;
+          color: white;
+        }
+      }
     }
   }
 

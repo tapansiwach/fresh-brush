@@ -30,16 +30,24 @@ function Dashboard() {
       <div className="dashboard__container">
         <div className="dashboard__sidenav">
           <ul>
-            <li>Canvas</li>
-            <li>Gallery</li>
+            <li
+              onClick={e => setView("canvas")}
+              className={(view === "canvas") ? "active" : ""}
+            >
+              Canvas
+            </li>
+            <li
+              onClick={e => setView("gallery")}
+              className={(view === "gallery") ? "active" : ""}
+            >
+              Gallery
+            </li>
             <hr />
-            <li>
-              <button
-                className="logout__button"
-                onClick={logoutUser}
-              >
-                Logout
-              </button>
+            <li
+              className="logout__button"
+              onClick={logoutUser}
+            >
+              Logout
             </li>
           </ul>
         </div>
