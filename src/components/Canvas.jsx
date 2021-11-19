@@ -49,7 +49,7 @@ function Canvas() {
     const fileName = Date.now();
     canvasRef.current.toBlob(blob => {
       saveImageToStorage(uid, fileName, blob);
-      createImageDocInDB(uid, fileName);
+      // createImageDocInDB(uid, fileName);
     });
   }
 

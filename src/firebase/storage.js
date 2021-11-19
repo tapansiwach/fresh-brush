@@ -1,5 +1,10 @@
-import { storage } from './config';
-import { ref, uploadBytes } from "firebase/storage";
+import { storage, db } from './config';
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 const saveImageToStorage = async (uid, fileName, file) => {
   try {
@@ -8,6 +13,13 @@ const saveImageToStorage = async (uid, fileName, file) => {
 
     // 'file' comes from the Blob or File API
     await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(storageRef);
+    console.log(`downloadURL`, downloadURL);
+    await setDoc(doc(db, "images", `${fileName}`), {
+      uid,
+      filePath,
+      downloadURL,
+    });
   } catch (error) {
     console.log(`error`, error.message);
   }

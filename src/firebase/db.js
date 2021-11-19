@@ -14,19 +14,19 @@ const createUserDocInDB = async (uid, name, email) => {
   }
 }
 
-const createImageDocInDB = async (uid, fileName, filePath) => {
-  try {
-    const filePath = `users/${uid}/${fileName}`;
-    await setDoc(doc(db, "images", `${fileName}`), {
-      uid,
-      filePath,
-    });
-  } catch (error) {
-    console.log(`error`, error.message);
-  }
-}
+// const createImageDocInDB = async (uid, fileName, filePath) => {
+//   try {
+//     const filePath = `users/${uid}/${fileName}`;
+//     await setDoc(doc(db, "images", `${fileName}`), {
+//       uid,
+//       filePath,
+//     });
+//   } catch (error) {
+//     console.log(`error`, error.message);
+//   }
+// }
 
 export {
   createUserDocInDB,
-  createImageDocInDB,
+  // createImageDocInDB,
 }
