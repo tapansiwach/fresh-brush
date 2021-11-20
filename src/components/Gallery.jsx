@@ -18,9 +18,10 @@ function Gallery({ uid }) {
 
 
   return (
-    <div>
+    <div id="gallery">
       {urls.length > 0 &&
         urls.map(url => <img
+          key={url}
           src={url}
           alt=""
           height="250px"
