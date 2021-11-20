@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from 'react'
+import { auth } from '../firebase/config';
 import { getImageDocs } from '../firebase/db';
 import './Gallery.scss';
 
 function Gallery({ uid }) {
-  const [images, setImages] = useState([]);
+  const [urls, setUrls] = useState([]);
 
   useEffect(async () => {
     const snap = await getImageDocs(uid);
+    const allUrls = []
     snap.forEach(doc => {
-      console.log(`doc.data()`, doc.data());
-    })
+      const aUrl = doc.data().downloadURL;
+      allUrls.push(aUrl);
+    });
+    setUrls(allUrls);
   }, []);
+
 
   return (
     <div>
-      Gallery
+      {urls.length > 0 &&
+        urls.map(url => <img
+          src={url}
+          alt=""
+          height="250px"
+        />)
+      }
     </div>
   )
 }
