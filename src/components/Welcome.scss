@@ -1,0 +1,35 @@
+@import '../styles/variables.scss';
+
+.welcome {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  grid-template-rows: 32px 1fr 32px;
+
+  &__action {
+    background-color: transparent;
+    grid-area: 2 / 2 / span 1 / span 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__link {
+      text-decoration: none;
+
+      h1 {
+        padding: 16px;
+        background-color: $secondary;
+        &:hover {
+          background-color: $primary;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__image{
+    width: 100%;
+    border: 5px solid $secondary-strong;
+    grid-area: 2 / 2 / span 1 / span 1;
+  }
+}
