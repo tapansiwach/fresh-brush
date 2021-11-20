@@ -22,9 +22,15 @@ const createUserDocInDB = async (uid, name, email) => {
 }
 
 const getImageDocs = async (uid) => {
-  const q = query(collection(db, "images"), where("uid", "==", uid));
-  const querySnapshot = await getDocs(q);
-  return querySnapshot;
+  try {
+    if (uid) {
+      const q = query(collection(db, "images"), where("uid", "==", uid));
+      const querySnapshot = await getDocs(q);
+      return querySnapshot;
+    }
+  } catch (error) {
+    console.log(`error`, error.message);
+  }
 }
 
 export {

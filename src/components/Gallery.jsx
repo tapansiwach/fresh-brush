@@ -15,7 +15,7 @@ function Gallery({ uid }) {
       });
       setUrls(allUrls);
     }
-    fetchData();
+    if (uid) fetchData();
   }, [uid]);
 
 

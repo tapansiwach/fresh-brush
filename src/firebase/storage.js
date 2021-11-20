@@ -14,7 +14,6 @@ const saveImageToStorage = async (uid, fileName, file) => {
     // 'file' comes from the Blob or File API
     await uploadBytes(storageRef, file);
     const downloadURL = await getDownloadURL(storageRef);
-    console.log(`downloadURL`, downloadURL);
     await setDoc(doc(db, "images", `${fileName}`), {
       uid,
       filePath,
