@@ -1,0 +1,13 @@
+@import '../styles/variables.scss';
+
+#gallery {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  img {
+    margin: 16px;
+    border: 5px solid $secondary-strong;
+    background-color: honeydew;
+  }
+}
