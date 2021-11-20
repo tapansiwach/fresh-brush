@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import Reset from './components/Reset';
+import Welcome from './components/Welcome.jsx';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/welcome" element={<Welcome />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />
