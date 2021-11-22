@@ -63,6 +63,19 @@ function Canvas() {
       >
         your browser doesn't support canvas
       </canvas>
+      <div className="controls">
+        <input
+          type="color"
+          name="color"
+          onChange={e => contextRef.current.strokeStyle = e.target.value}
+        />
+        <input
+          type="number"
+          name="thickness"
+          min="1"
+          onChange={e => contextRef.current.lineWidth = e.target.value}
+        />
+      </div>
       <button
         onClick={saveImage}
       >
