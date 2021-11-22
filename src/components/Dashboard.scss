@@ -3,14 +3,14 @@
 .dashboard {
 
   &__container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 250px auto;
   }
 
   &__sidenav {
-    width: 250px;
     background-color: $primary;
     padding: 16px;
 
@@ -38,7 +38,6 @@
   }
 
   &__mainContent {
-    flex: auto;
     background-color: $secondary;
     padding: 16px;
     display: flex;

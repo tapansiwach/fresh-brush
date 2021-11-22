@@ -18,8 +18,8 @@ function Canvas() {
     const [sideNavWidth, mainContentPadding] = [250, 16];
     canvas.width = (window.innerWidth - (sideNavWidth + 4 * mainContentPadding)) * devicePixelRatio;
     canvas.height = (window.innerHeight - 140) * devicePixelRatio;
-    canvas.style.width = `${(window.innerWidth - (sideNavWidth + 4 * mainContentPadding))}px`;
-    canvas.style.height = `${(window.innerHeight - 100)}px`;
+    canvas.style.width = `${(window.innerWidth - (sideNavWidth + 2 * mainContentPadding))}px`;
+    canvas.style.height = `${(window.visualViewport.height - 140)}px`;
     context.lineJoin = "round";
     context.lineCap = "round";
     context.strokeStyle = colorInputRef.current.value;
