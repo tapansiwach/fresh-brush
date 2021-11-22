@@ -75,9 +75,10 @@ function Canvas() {
           onChange={e => contextRef.current.strokeStyle = e.target.value}
         />
         <input
-          type="number"
+          type="range"
           name="thickness"
           min="1"
+          max="30"
           ref={thicknessInputRef}
           onChange={e => contextRef.current.lineWidth = e.target.value}
         />
