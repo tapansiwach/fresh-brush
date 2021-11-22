@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/config';
 import { saveImageToStorage } from '../firebase/storage';
+import { ImUndo2 } from 'react-icons/im';
+import { MdLayersClear } from 'react-icons/md';
+
 import './Canvas.scss';
 
 function Canvas() {
@@ -88,30 +91,34 @@ function Canvas() {
       >
         your browser doesn't support canvas
       </canvas>
-      <div className="controls">
-        <input
-          type="color"
-          name="color"
-          ref={colorInputRef}
-          onChange={e => contextRef.current.strokeStyle = e.target.value}
-        />
-        <input
-          type="range"
-          name="thickness"
-          min="1"
-          max="30"
-          ref={thicknessInputRef}
-          onChange={e => contextRef.current.lineWidth = e.target.value}
-        />
-        <div
-          onClick={undoStroke}
-        >
-          Undo
+      <div className="tools">
+        <div className="brush-inputs">
+          <input
+            type="color"
+            name="color"
+            ref={colorInputRef}
+            onChange={e => contextRef.current.strokeStyle = e.target.value}
+          />
+          <input
+            type="range"
+            name="thickness"
+            min="1"
+            max="30"
+            ref={thicknessInputRef}
+            onChange={e => contextRef.current.lineWidth = e.target.value}
+          />
         </div>
-        <div
-          onClick={clearCanvas}
-        >
-          Clear
+        <div className="canvas-controls">
+          <ImUndo2
+            title="Undo Stroke"
+            className="control undo"
+            onClick={undoStroke}
+          />
+          <MdLayersClear
+            title="Clear Canvas"
+            className="control clear"
+            onClick={clearCanvas}
+          />
         </div>
       </div>
       <div

@@ -4,12 +4,28 @@
   background-color: honeydew;
 }
 
-.controls {
+.tools {
   margin: 1em 0;
   display: flex;
-  
-  input {
-      margin-right: .5em;
+  justify-content: space-between;
+
+  .brush-inputs {
+    input {
+        margin-right: .5em;
+    }
+  }
+
+  .canvas-controls {
+
+    .control {
+      margin-left: 0.5em;
+      font-size: larger;
+      color: red;
+      &:hover {
+        cursor: pointer;
+        font-weight: bold;
+      }
+    }
   }
 }
 
