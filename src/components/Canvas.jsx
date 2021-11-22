@@ -11,6 +11,7 @@ function Canvas() {
   const colorInputRef = useRef(null);
   const thicknessInputRef = useRef(null)
   const [isDrawing, setIsDrawing] = useState(false);
+  const [strokes, setStrokes] = useState([]);
 
   useEffect(() => {
     const context = canvasRef.current.getContext("2d");
@@ -45,6 +46,22 @@ function Canvas() {
   const finishDrawing = (e) => {
     contextRef.current.closePath();
     setIsDrawing(false);
+    const [width, height] = [canvasRef.current.width, canvasRef.current.height];
+    const data = contextRef.current.getImageData(0, 0, width, height);
+    setStrokes([...strokes, { width, height, data }]);
+  }
+
+  const undoStroke = () => {
+    if (strokes.length > 0) {
+      strokes.pop();
+      const restorePoint = strokes[strokes.length - 1];
+      if (strokes.length > 0) {
+        contextRef.current.putImageData(restorePoint.data, 0, 0);
+      } else {
+        const [width, height] = [canvasRef.current.width, canvasRef.current.height];
+        contextRef.current.clearRect(0, 0, width, height);
+      }
+    }
   }
 
   const saveImage = () => {
@@ -52,7 +69,6 @@ function Canvas() {
     const fileName = Date.now();
     canvasRef.current.toBlob(blob => {
       saveImageToStorage(uid, fileName, blob);
-      // createImageDocInDB(uid, fileName);
     });
   }
 
@@ -82,6 +98,11 @@ function Canvas() {
           ref={thicknessInputRef}
           onChange={e => contextRef.current.lineWidth = e.target.value}
         />
+        <div
+          onClick={undoStroke}
+        >
+          Undo
+        </div>
       </div>
       <div
         className="save"
