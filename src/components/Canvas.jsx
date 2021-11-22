@@ -58,10 +58,15 @@ function Canvas() {
       if (strokes.length > 0) {
         contextRef.current.putImageData(restorePoint.data, 0, 0);
       } else {
-        const [width, height] = [canvasRef.current.width, canvasRef.current.height];
-        contextRef.current.clearRect(0, 0, width, height);
+        clearCanvas();
       }
     }
+  }
+
+  const clearCanvas = () => {
+    const [width, height] = [canvasRef.current.width, canvasRef.current.height];
+    contextRef.current.clearRect(0, 0, width, height);
+    setStrokes([]);
   }
 
   const saveImage = () => {
@@ -102,6 +107,11 @@ function Canvas() {
           onClick={undoStroke}
         >
           Undo
+        </div>
+        <div
+          onClick={clearCanvas}
+        >
+          Clear
         </div>
       </div>
       <div
