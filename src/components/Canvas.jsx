@@ -8,6 +8,8 @@ function Canvas() {
   const [user] = useAuthState(auth);
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
+  const colorInputRef = useRef(null);
+  const thicknessInputRef = useRef(null)
   const [isDrawing, setIsDrawing] = useState(false);
 
   useEffect(() => {
@@ -15,11 +17,13 @@ function Canvas() {
     const canvas = canvasRef.current;
     const [sideNavWidth, mainContentPadding] = [250, 16];
     canvas.width = (window.innerWidth - (sideNavWidth + 4 * mainContentPadding)) * devicePixelRatio;
-    canvas.height = (window.innerHeight - 100) * devicePixelRatio;
+    canvas.height = (window.innerHeight - 140) * devicePixelRatio;
     canvas.style.width = `${(window.innerWidth - (sideNavWidth + 4 * mainContentPadding))}px`;
     canvas.style.height = `${(window.innerHeight - 100)}px`;
     context.lineJoin = "round";
     context.lineCap = "round";
+    context.strokeStyle = colorInputRef.current.value;
+    context.lineWidth = thicknessInputRef.current.value;
     context.scale(devicePixelRatio, devicePixelRatio);
     contextRef.current = context;
   }, [])
@@ -67,20 +71,23 @@ function Canvas() {
         <input
           type="color"
           name="color"
+          ref={colorInputRef}
           onChange={e => contextRef.current.strokeStyle = e.target.value}
         />
         <input
           type="number"
           name="thickness"
           min="1"
+          ref={thicknessInputRef}
           onChange={e => contextRef.current.lineWidth = e.target.value}
         />
       </div>
-      <button
+      <div
+        className="save"
         onClick={saveImage}
       >
         Save Image
-      </button>
+      </div>
     </>
   )
 }

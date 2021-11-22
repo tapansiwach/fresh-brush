@@ -1,6 +1,28 @@
+@import '../styles/variables.scss';
+
 #canvas {
   background-color: honeydew;
-  + button {
-    margin-top: 16px;
+
+
+}
+
+.controls {
+  margin: 1em 0;
+  display: flex;
+  
+  input {
+      margin-right: .5em;
   }
 }
+
+.save {
+  padding: 1em;
+  background-color: $secondary-strong;
+  color: white;
+  text-align: center;
+
+  &:hover {
+    background-color: $primary-strong;
+  }
+}
+
