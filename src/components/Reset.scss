@@ -1,11 +1,29 @@
+@import '../styles/mixins.scss';
+
 .reset {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include auth-screen();
 
   .reset__container {
-    display: flex;
-    flex-direction: column;
+    @include auth-container();
+
+    input {
+      @include auth-input();
+    }
+
+    .reset__button {
+      @include auth-button();
+
+      &:hover {
+        @include auth-button-hover();
+      }
+    }
+    
+    .reset__div {
+      @include auth-text();
+
+      .link {
+        @include auth-link();
+      }
+    }
   }
 }

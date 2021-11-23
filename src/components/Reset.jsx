@@ -35,7 +35,7 @@ function Reset() {
           Reset your passsord
         </button>
         <div className="reset__div">
-          Don't have an account? <Link to="/register">Register</Link> now
+          Don't have an account? <Link className="link" to="/register">Register</Link> now
         </div>
       </div>
     </div>

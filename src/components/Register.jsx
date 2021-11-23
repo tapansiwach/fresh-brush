@@ -67,7 +67,12 @@ function Register() {
           Register
         </button>
         <div className="register__div">
-          Already have an account? <Link to="/login">Login</Link> here
+          Already have an account?
+          <Link
+            className="link"
+            to="/login"
+          > Login
+          </Link> here
         </div>
       </div>
     </div>

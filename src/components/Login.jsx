@@ -48,10 +48,10 @@ function Login() {
           Login
         </button>
         <div className="login__div">
-          Don't have an account? <Link to="/register">Register</Link> now
+          Don't have an account? <Link className="link" to="/register">Register</Link> now
         </div>
         <div className="login__div">
-          Forgot Your Password? Reset it <Link to="/reset">here</Link>
+          Forgot Your Password? Reset it <Link className="link" to="/reset">here</Link>
         </div>
       </div>
     </div>

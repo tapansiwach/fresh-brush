@@ -1,0 +1,57 @@
+@import './variables.scss';
+
+@mixin auth-screen() {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $secondary;
+}
+
+@mixin auth-container() {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  margin: 0 auto 100px;
+  padding: 3em;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+@mixin auth-input() {
+  background: $secondary;
+  margin-top: 0.5em;
+  width: 100%;
+  border: 0;
+  margin: 0 0 1em;
+  padding: 1em;
+  box-sizing: border-box;
+  font-size: 1em;  
+  outline: 0;
+}
+
+@mixin auth-button() {
+  text-transform: uppercase;
+  outline: 0;
+  width: 100%;
+  border: 0;
+  padding: 15px;    
+  background-color: $secondary-strong;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+@mixin auth-button-hover() {
+  background-color: $primary-strong;
+  color: white;
+}
+
+@mixin auth-text() {
+  color: $secondary-strong;
+}
+
+@mixin auth-link() {
+  color: $primary-strong;
+  text-decoration: none;
+}
