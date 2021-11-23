@@ -18,6 +18,7 @@ const createUserDocInDB = async (uid, name, email) => {
     });
   } catch (error) {
     console.log(`error`, error.message);
+    alert(error.message);
   }
 }
 
@@ -30,6 +31,7 @@ const getImageDocs = async (uid) => {
     }
   } catch (error) {
     console.log(`error`, error.message);
+    alert(error.message);
   }
 }
 

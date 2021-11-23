@@ -18,6 +18,7 @@ function Login() {
   useEffect(() => {
     if (error) {
       console.log(`error`, error.message);
+      alert(error.message);
       return;
     }
     if (loading) return;

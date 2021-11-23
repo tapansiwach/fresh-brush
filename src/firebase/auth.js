@@ -13,6 +13,7 @@ const register = async (name, email, password) => {
     return [uid, null];
   } catch (error) {
     console.log(`error.message`, error.message);
+    alert(error.message);
     return [null, error.message];
   }
 }
@@ -22,6 +23,7 @@ const logout = async () => {
     await signOut(auth);
   } catch (error) {
     console.log(`error`, error.message);
+    alert(error.message);
   }
 }
 
@@ -30,6 +32,7 @@ const login = async (email, password) => {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
     console.log(`error`, error.message);
+    alert(error.message);
   }
 }
 
@@ -39,6 +42,7 @@ const resetPasssord = async (email) => {
     return { success: true }
   } catch (error) {
     console.log(`error`, error.message);
+    alert(error.message);
     return { success: false, error: error.message }
   }
 }

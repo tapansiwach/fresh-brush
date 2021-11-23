@@ -19,8 +19,10 @@ const saveImageToStorage = async (uid, fileName, file) => {
       filePath,
       downloadURL,
     });
+    alert("image saved to Gallery");
   } catch (error) {
     console.log(`error`, error.message);
+    alert(error.message);
   }
 }
 
